@@ -4,17 +4,37 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var config = require('./config/params');
 var mongoose = require('mongoose');
+var logger = require('express-logger');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var multer = require('multer'); //libreria-middleware para aceptar subida de  archivos
+var engine = require('ejs-mate');
+//codificacion de trama url con bodyParser --middleware
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+//solo trama json para las apis --middleware
+var jsonParser = bodyParser.json();
 
 //conexion con la base de datos de MongoDB
+mongoose.connect('mongodb://' + config.db.host + ':' + config.db.port + '/' + config.db.name);
 
 
-//configuracion de donde estan los ficheros estaticos
-app.use(express.static(__dirname + '/client/src'));
+//configuracion del servidor
+app.use(express.static('client/src'));
+app.use(cookieParser());
+app.use(urlencodedParser);
+
+app.engine('ejs', engine);
+app.set('views', __dirname + '/app/views');
+app.set('view engine', 'ejs');
+//app.use(logger({ path: __dirname + '/storage/logs'}));
+
+//carga de rutas de la aplicacion
+require('./app/routes/index')(app);
 
 //levantando el servidor
 server.listen(config.server.port, function(err){
   if(err) console.log('No se puedo levantar el servidor');
-  console.log('servidor escuchando en el puesto '+ config.server.port);
+  console.log('servidor escuchando en el puerto '+ config.server.port);
 });
 
 var defaultMessages = require('./data');
