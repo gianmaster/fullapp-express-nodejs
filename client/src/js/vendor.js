@@ -14,4 +14,5 @@ module.exports = function(){
     // LumX uses a global 'moment'
   require('node-lumx');
   require('bootstrap');
+  require('bootstrap/dist/css/bootstrap.css');
 };

@@ -1,1 +1,1 @@
-require('./vendor');
+require('./vendor')();
