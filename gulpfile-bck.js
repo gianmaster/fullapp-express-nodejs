@@ -1,10 +1,5 @@
 var gulp = require('gulp');
 var server = require('gulp-express');
-var webpack = require('webpack-stream');
-
-var webpackConfig = require('./webpack.config'); // no se utiliza sacar esto
-
-var run = require('gulp-run');
 
 gulp.task('server', function () {
     // Start the server at the beginning of the task
@@ -26,18 +21,4 @@ gulp.task('server', function () {
     gulp.watch(['app/scripts/**/*.js'], ['jshint']);
     gulp.watch(['app/images/**/*'], server.notify);
     gulp.watch(['server.js', 'server/**/*.js'], [server.run]);
-    gulp.watch(['client/src/js/**/*.js'], ['webpack']);
-});
-
-/*
-gulp.task('webpacktask', function() {
-  return gulp.src('src/entry.js')
-    .pipe(webpack())
-    .pipe(gulp.dest('dist/'));
-});
-*/
-
-gulp.task("webpack", function() {
-    // run webpack
-    return run('node ./node_modules/webpack/bin/webpack.js').exec();
 });

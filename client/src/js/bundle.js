@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2c51e1c44be3bac9bd0d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7869fd72cf982e896ea9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -682,7 +682,11 @@
 
 	'use strict';
 
+	//inclusion de los vendors, librerias necesarias para la aplicacion
 	__webpack_require__(4)();
+	//inclusion de la logica de la aplicacion
+	__webpack_require__(132);
+	alert('qye sendual');
 
 /***/ },
 /* 4 */
@@ -692,12 +696,8 @@
 
 	module.exports = function () {
 	  //los modulos deben ser requeridos en orden
-	  /*
-	  require('jquery');
-	  require('velocity-animate');
-	  require('angular');
-	  require('moment');
-	  */
+	  //Esa rutina lo que hace es instanciar los componentes que se necesitan en el proyecto y que esten definidos globalmente para que todos los componetes funciones correctamente
+	  //ejemplo bootstrap necesita de jQuery al igual que muchos otros componentes
 	  global.$ = global.jQuery = __webpack_require__(5);
 	  // $ for Lumx, jQuery for velocity
 	  __webpack_require__(6);
@@ -64150,6 +64150,19 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 132 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(7);
+	var modulo = angular.module('app', []);
+
+	modulo.controller('PruebaController', ['$scope', function ($scope) {
+	  $scope.name = 'Giancarlos cercado';
+	}]);
 
 /***/ }
 /******/ ]);
