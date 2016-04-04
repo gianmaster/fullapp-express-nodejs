@@ -1,13 +1,8 @@
-var angular = require('angular');
-var modulo = angular.module('app', []);
+//cargando modulo
+var moduloTest = require('./modules/testModule');
+//cargando controladores
+require('./controllers/TestController')(moduloTest);
+//cargando los servicios
+require('./services/tareaService')(moduloTest);
 
-modulo.controller('PruebaController', function(){
-  var vm = this;
-  vm.name = 'Giancarlos cercado';
-  vm.counter = 0;
-  vm.incrementar = function(){
-    vm.counter++;
-  }
-});
-
-module.exports = modulo;
+module.exports = moduloTest;

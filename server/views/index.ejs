@@ -80,7 +80,12 @@ svg{
         <h2>Aplicación COOL</h2>
         <p>Creador: {{vm.name}}</p>
         <p>{{vm.counter}}</p>
-        <button type="button" name="button"ng-click="vm.incrementar()">Incrementa contador</button>
+        <button class="btn btn-success" type="button" name="button"ng-click="vm.incrementar()">Incrementa contador</button>
+        <div class="divider"></div>
+        <div class="col-xs-12">
+          <input ng-model="vm.mensaje" ng-init="vm.mensaje='Default'">
+          <button type="button" name="button2" class="btn btn-primary" ng-click="vm.testAlert(vm.mensaje)">3 clcks para alerts</button>
+        </div>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 //'use strict';
 
 var webpack = require('webpack'),
+    ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
     path = require('path');
 
 var APP_DIR = path.join(__dirname, 'client/src');
@@ -17,7 +18,21 @@ module.exports = {
     filename: 'bundle.js'
   },
   plugins:[
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.min\.js$/,
+      minimize: true,
+      compress: {
+         warnings: false
+       },
+       mangle: {
+          except: ['$super', '$', 'exports', 'require']
+      }
+    }),
+    new ngAnnotatePlugin({
+            add: true,
+            // other ng-annotate options here
+        })
   ],
   module: {
     loaders: [
