@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7869fd72cf982e896ea9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "241b7d898cfb3d124a18"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -686,7 +686,15 @@
 	__webpack_require__(4)();
 	//inclusion de la logica de la aplicacion
 	__webpack_require__(132);
-	alert('qye sendual');
+
+	/*
+	setInterval(function(){
+	  $(".loading-page").remove();
+	  $('.content-init').addClass('ready');
+	}, 3000)
+	*/
+	$(".loading-page").remove();
+	$('.content-init').addClass('ready');
 
 /***/ },
 /* 4 */
@@ -64160,9 +64168,16 @@
 	var angular = __webpack_require__(7);
 	var modulo = angular.module('app', []);
 
-	modulo.controller('PruebaController', ['$scope', function ($scope) {
-	  $scope.name = 'Giancarlos cercado';
-	}]);
+	modulo.controller('PruebaController', function () {
+	  var vm = this;
+	  vm.name = 'Giancarlos cercado';
+	  vm.counter = 0;
+	  vm.incrementar = function () {
+	    vm.counter++;
+	  };
+	});
+
+	module.exports = modulo;
 
 /***/ }
 /******/ ]);

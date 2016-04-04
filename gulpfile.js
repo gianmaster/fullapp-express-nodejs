@@ -26,7 +26,7 @@ gulp.task('server', function () {
     gulp.watch(['app/scripts/**/*.js'], ['jshint']);
     gulp.watch(['app/images/**/*'], server.notify);
     gulp.watch(['server.js', 'server/**/*.js'], [server.run]);
-    gulp.watch(['client/src/js/**/*.js'], ['webpack']);
+    gulp.watch(['client/src/js/**/*.js'/*, 'server/views/*.ejs'*/], ['webpack']);
 });
 
 /*

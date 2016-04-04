@@ -3,4 +3,12 @@
 require('./vendor')();
 //inclusion de la logica de la aplicacion
 require('./angular_app/app');
-alert('qye sendual');
+
+/*
+setInterval(function(){
+  $(".loading-page").remove();
+  $('.content-init').addClass('ready');
+}, 3000)
+*/
+$(".loading-page").remove();
+$('.content-init').addClass('ready');
