@@ -1,3 +1,13 @@
-body{
-  background: red;
+.sticker{
+  display: inherit;
+  background: #D6C688;
+  color: #422C2C;
+  /* margin: 20px; */
+  padding: 20px;
+  border-radius: 5px 30px;
+  box-shadow: 10px 10px 60px #292727;
+  background-color: #DAC68F;
+  color: black;
+  margin-bottom: 2em;
+  border-bottom: solid #464436 0.2em;
 }

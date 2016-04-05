@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "6608471f1fa434f433ff"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1ec9f2f6f5ecd4ebff7c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -685,7 +685,7 @@
 	//inclusion de los vendors, librerias necesarias para la aplicacion
 	__webpack_require__(4)();
 	//inclusion de la logica de la aplicacion
-	__webpack_require__(132);
+	__webpack_require__(134);
 
 	/*
 	setInterval(function(){
@@ -715,6 +715,7 @@
 	  __webpack_require__(109);
 	  __webpack_require__(110);
 	  __webpack_require__(123);
+	  __webpack_require__(132);
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
@@ -64163,19 +64164,59 @@
 /* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(133);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(131)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(133, function() {
+				var newContent = __webpack_require__(133);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 133 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(125)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".sticker{display:inherit;background:#d6c688;color:#422c2c;padding:20px;border-radius:5px 30px;box-shadow:10px 10px 60px #292727;background-color:#dac68f;color:#000;border-bottom:.2em solid #464436}", ""]);
+
+	// exports
+
+
+/***/ },
+/* 134 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	//cargando modulo
-	var moduloTest = __webpack_require__(133);
+	var moduloTest = __webpack_require__(135);
 	//cargando controladores
-	__webpack_require__(134)(moduloTest);
+	__webpack_require__(136)(moduloTest);
 	//cargando los servicios
-	__webpack_require__(135)(moduloTest);
+	__webpack_require__(137)(moduloTest);
 
 	module.exports = moduloTest;
 
 /***/ },
-/* 133 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64185,7 +64226,7 @@
 	module.exports = angular.module('app', []);
 
 /***/ },
-/* 134 */
+/* 136 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -64208,7 +64249,7 @@
 	};
 
 /***/ },
-/* 135 */
+/* 137 */
 /***/ function(module, exports) {
 
 	'use strict';
